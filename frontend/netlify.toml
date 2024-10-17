@@ -1,18 +1,7 @@
 [build]
-  # ระบุคำสั่ง build
   command = "npm run build"
-  # ระบุโฟลเดอร์ที่ใช้สำหรับเผยแพร่
   publish = "frontend/dist"
-
-  # หากใช้ environment variables สามารถตั้งค่าที่นี่
-  environment = { 
-    NODE_VERSION = "16.0.0" # ตัวอย่างการตั้งค่าเวอร์ชัน Node.js
-  }
-
-[dev]
-  framework = "react" # ระบุว่าใช้ React
-
-# กำหนดการตั้งค่า redirects (ถ้ามีการใช้ react-router)
+  
 [[redirects]]
   from = "/*"
   to = "/index.html"
