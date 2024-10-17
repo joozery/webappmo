@@ -10,7 +10,10 @@ function App() {
     e.preventDefault();
 
     try {
-      const response = await fetch('http://localhost:3001/login', {
+      // ใช้ environment variable แทนการใช้ URL ตรงๆ
+      const backendUrl = process.env.REACT_APP_BACKEND_URL || 'http://localhost:3001';
+      
+      const response = await fetch(`${backendUrl}/login`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
