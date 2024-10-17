@@ -4,12 +4,30 @@ import './App.css';
 function App() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [message, setMessage] = useState('');
 
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
-    // เขียน logic สำหรับการ login ที่นี่
-    console.log('Email:', email);
-    console.log('Password:', password);
+
+    try {
+      const response = await fetch('http://localhost:3001/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email, password }),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        setMessage(data.message);
+      } else {
+        setMessage(data.error);
+      }
+    } catch (error) {
+      setMessage('เกิดข้อผิดพลาดในการเชื่อมต่อกับเซิร์ฟเวอร์');
+    }
   };
 
   return (
@@ -42,14 +60,12 @@ function App() {
               <a href="#">ลืมรหัสผ่าน?</a>
             </div>
             <button type="submit">เข้าสู่ระบบ</button>
-            <p>
-              คุณมีบัญชีแล้วหรือยัง <a href="#">สร้างบัญชี</a>
-            </p>
+            <p>{message}</p>
           </form>
         </div>
         <div className="welcome-message">
           <h2>ยินดีตอนรับกลับมา</h2>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
         </div>
       </div>
     </div>
