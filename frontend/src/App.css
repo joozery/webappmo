@@ -86,7 +86,7 @@ button {
   padding: 10px;
   background-color: #70bfff;
   border: none;
-  color: white;
+  color: black;
   font-size: 18px;
   border-radius: 30px;
   cursor: pointer;
@@ -95,4 +95,45 @@ button {
 
 button:hover {
   background-color: #519fd6;
+}
+
+/* เพิ่ม Media Queries สำหรับอุปกรณ์มือถือ */
+@media (max-width: 768px) {
+  .login-page {
+    flex-direction: column;
+    max-width: 100%;
+    height: auto;
+    box-shadow: none;
+    border-radius: 0;
+  }
+
+  .login-container {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .login-form,
+  .welcome-message {
+    width: 100%;
+    padding: 20px;
+  }
+
+  .login-form {
+    order: 2; /* ย้ายฟอร์มลงด้านล่าง */
+  }
+
+  .welcome-message {
+    order: 1; /* ย้ายข้อความขึ้นด้านบน */
+    text-align: center;
+  }
+
+  button {
+    font-size: 16px;
+    padding: 12px;
+  }
+
+  .input-container input {
+    font-size: 14px;
+    padding: 8px;
+  }
 }

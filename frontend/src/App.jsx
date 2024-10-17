@@ -16,8 +16,8 @@ function App() {
     <div className="login-page">
       <div className="login-container">
         <div className="login-form">
-          <h1>Hello!</h1>
-          <p>Sign into Your account</p>
+          <h1>ยินดีต้อนรับ</h1>
+          <p>เข้าสู่ระบบด้วยบัญชีของคุณ</p>
           <form onSubmit={handleLogin}>
             <div className="input-container">
               <input
@@ -37,18 +37,18 @@ function App() {
             </div>
             <div className="options">
               <label>
-                <input type="checkbox" /> Remember me
+                <input type="checkbox" /> จดจำฉัน
               </label>
-              <a href="#">Forgot password?</a>
+              <a href="#">ลืมรหัสผ่าน?</a>
             </div>
-            <button type="submit">Sign In</button>
+            <button type="submit">เข้าสู่ระบบ</button>
             <p>
-              Don't have an account? <a href="#">Create</a>
+              คุณมีบัญชีแล้วหรือยัง <a href="#">สร้างบัญชี</a>
             </p>
           </form>
         </div>
         <div className="welcome-message">
-          <h2>Welcome Back!</h2>
+          <h2>ยินดีตอนรับกลับมา</h2>
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
         </div>
       </div>
