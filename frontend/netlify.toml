@@ -2,7 +2,7 @@
   # ระบุคำสั่ง build
   command = "npm run build"
   # ระบุโฟลเดอร์ที่ใช้สำหรับเผยแพร่
-  publish = "dist"
+  publish = "frontend/dist"
 
   # หากใช้ environment variables สามารถตั้งค่าที่นี่
   environment = { 
