@@ -1,10 +1,18 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const sqlite3 = require('sqlite3').verbose();
+const cors = require('cors'); // เพิ่มการเรียกใช้ cors
 const app = express();
 const port = 3001;
 
 app.use(bodyParser.json());
+
+// ตั้งค่า CORS เพื่ออนุญาตให้ Frontend เชื่อมต่อได้
+app.use(cors({
+  origin: 'https://testpromomo.netlify.app', // เปลี่ยนเป็นโดเมนของ Frontend ที่คุณใช้ เช่น Netlify หรือ Localhost
+  methods: ['GET', 'POST'], // กำหนดว่าอนุญาต method ใดบ้าง
+  credentials: true // อนุญาตการส่งข้อมูล session หรือ cookies ข้ามโดเมน
+}));
 
 // สร้างการเชื่อมต่อฐานข้อมูล SQLite
 const db = new sqlite3.Database('./users.db');
