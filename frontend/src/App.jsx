@@ -12,7 +12,7 @@ function App() {
     e.preventDefault();
 
     try {
-      const backendUrl = process.env.REACT_APP_BACKEND_URL || 'http://localhost:3001';
+      const backendUrl = process.env.REACT_APP_BACKEND_URL;  // ใช้ URL จาก environment
       const response = await fetch(`${backendUrl}/login`, {
         method: 'POST',
         headers: {
