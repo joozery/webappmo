@@ -1,10 +1,10 @@
 import React from 'react';
-import './Dashboard.css'; // ใช้ไฟล์ CSS สำหรับจัดการเลย์เอาท์
+import './Dashboard.css'; // ตรวจสอบว่ามีไฟล์ CSS นี้หรือยัง
 
 function Dashboard() {
   return (
     <div className="dashboard-container">
-      {/* Sidebar ด้านซ้าย */}
+      {/* Sidebar */}
       <div className="sidebar">
         <ul>
           <li>ประวัติ</li>

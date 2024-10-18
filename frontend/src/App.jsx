@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { BrowserRouter as Router, Route, Routes, Link, useNavigate } from 'react-router-dom';
 import './App.css';
 
-function App() {
+function Login() { // เปลี่ยนชื่อคอมโพเนนต์จาก App เป็น Login เพื่อความชัดเจน
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [message, setMessage] = useState('');
@@ -12,7 +12,7 @@ function App() {
     e.preventDefault();
 
     try {
-      const backendUrl = process.env.REACT_APP_BACKEND_URL;  // ใช้ URL จาก environment
+      const backendUrl = process.env.REACT_APP_BACKEND_URL || 'http://localhost:3001';  // ใช้ URL จาก environment
       const response = await fetch(`${backendUrl}/login`, {
         method: 'POST',
         headers: {
@@ -89,7 +89,7 @@ export default function Main() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<App />} />
+        <Route path="/" element={<Login />} />
         <Route path="/dashboard" element={<Dashboard />} />
       </Routes>
     </Router>
