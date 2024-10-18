@@ -1,18 +1,18 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
+import { BrowserRouter as Router, Route, Routes, Link, useNavigate } from 'react-router-dom';
 import './App.css';
 
 function App() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [message, setMessage] = useState('');
+  const navigate = useNavigate(); // ใช้สำหรับการนำทางไปยังหน้าอื่น
 
   const handleLogin = async (e) => {
     e.preventDefault();
 
     try {
-      // ใช้ environment variable แทนการใช้ URL ตรงๆ
       const backendUrl = process.env.REACT_APP_BACKEND_URL || 'http://localhost:3001';
-      
       const response = await fetch(`${backendUrl}/login`, {
         method: 'POST',
         headers: {
@@ -25,6 +25,7 @@ function App() {
 
       if (response.ok) {
         setMessage(data.message);
+        navigate('/dashboard'); // นำทางไปยังหน้า Dashboard หลังจาก login สำเร็จ
       } else {
         setMessage(data.error);
       }
@@ -75,4 +76,22 @@ function App() {
   );
 }
 
-export default App;
+function Dashboard() {
+  return (
+    <div>
+      <h1>Dashboard</h1>
+      <p>Welcome to your Dashboard!</p>
+    </div>
+  );
+}
+
+export default function Main() {
+  return (
+    <Router>
+      <Routes>
+        <Route path="/" element={<App />} />
+        <Route path="/dashboard" element={<Dashboard />} />
+      </Routes>
+    </Router>
+  );
+}
