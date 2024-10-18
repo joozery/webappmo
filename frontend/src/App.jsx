@@ -12,7 +12,7 @@ function Login() { // เปลี่ยนชื่อคอมโพเนน�
     e.preventDefault();
 
     try {
-      const backendUrl = process.env.REACT_APP_BACKEND_URL || 'http://localhost:3001';  // ใช้ URL จาก environment
+      const backendUrl = process.env.REACT_APP_BACKEND_URL || 'https://webappmo.onrender.com'; // ใช้ URL จาก environment
       const response = await fetch(`${backendUrl}/login`, {
         method: 'POST',
         headers: {
