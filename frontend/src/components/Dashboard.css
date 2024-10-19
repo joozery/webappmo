@@ -8,11 +8,11 @@ body, html {
 
 .container {
   display: flex;
-  height: 100vh;
-  width: 100vw;
-  border: 2px solid #ccc;
-  border-radius: 16px;
-  overflow: hidden;
+  height: 800px;
+  width: 1440px;
+  border: 2px solid #ccc; /* เพิ่ม border ให้กับ container */
+  border-radius: 16px; /* เพิ่มความโค้งมน */
+  overflow: hidden; /* ป้องกันไม่ให้เนื้อหาล้นขอบ */
 }
 
 .sidebar {
@@ -23,8 +23,8 @@ body, html {
   flex-direction: column;
   justify-content: space-between;
   padding: 20px;
-  border-top-left-radius: 16px;
-  border-bottom-left-radius: 16px;
+  border-top-left-radius: 16px; /* ทำให้มุมด้านบนโค้งมน */
+  border-bottom-left-radius: 16px; /* ทำให้มุมด้านล่างโค้งมน */
 }
 
 .menu {
@@ -33,20 +33,19 @@ body, html {
 }
 
 .menu li {
-  margin-bottom: 15px;
+  margin-bottom: 15px; /* เพิ่มระยะห่างระหว่างไอเท็มเมนู */
 }
 
 .menu li a {
   text-decoration: none;
   color: #ffffff;
-  display: flex;
+  display: flex; /* แสดงไอคอนและข้อความในบรรทัดเดียวกัน */
   align-items: center;
-  font-size: 16px;
   padding: 5px;
 }
 
 .menu li a i {
-  margin-right: 20px;
+  margin-right: 20px; /* เพิ่มระยะห่างระหว่างไอคอนกับข้อความ */
 }
 
 .menu li a:hover {
@@ -64,8 +63,8 @@ body, html {
   flex: 1;
   padding: 20px;
   background-color: #f4f6f8;
-  border-top-right-radius: 16px;
-  border-bottom-right-radius: 16px;
+  border-top-right-radius: 16px; /* ทำให้มุมด้านบนโค้งมน */
+  border-bottom-right-radius: 16px; /* ทำให้มุมด้านล่างโค้งมน */
 }
 
 .header {

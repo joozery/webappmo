@@ -57,7 +57,7 @@ const Dashboard = () => {
 
       {/* Content */}
       <div className="content">
-        <h1>กรอกชื่อผู้รับบริการ</h1>
+        <h2>กรอกชื่อผู้รับบริการ</h2>
 
         <div className="form-container">
           <form onSubmit={handleSubmit}>
