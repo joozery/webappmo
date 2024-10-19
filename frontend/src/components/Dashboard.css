@@ -270,3 +270,19 @@ table tbody tr:hover {
     padding: 10px;
   }
 }
+/* จัดการส่วนของ radio button */
+.radio-group {
+  display: flex;
+  flex-wrap: wrap; /* ให้ radio buttons อยู่ในบรรทัดเดียวกัน และยืดหยุ่นได้ */
+  gap: 15px; /* ระยะห่างระหว่าง radio buttons */
+  margin-bottom: 20px;
+}
+
+.radio-group label {
+  display: flex;
+  align-items: center;
+}
+
+.radio-group input[type="radio"] {
+  margin-right: 10px; /* เพิ่มระยะห่างระหว่างปุ่ม radio กับข้อความ */
+}
