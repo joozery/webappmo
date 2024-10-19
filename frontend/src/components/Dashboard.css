@@ -18,6 +18,7 @@ a {
   color: #646cff;
   text-decoration: inherit;
 }
+
 a:hover {
   color: #535bf2;
 }
@@ -270,6 +271,7 @@ table tbody tr:hover {
     padding: 10px;
   }
 }
+
 /* จัดการส่วนของ radio button */
 .radio-group {
   display: flex;

@@ -86,16 +86,10 @@ const Dashboard = () => {
             <input type="text" name="idNumber" value={formData.idNumber} onChange={handleChange} placeholder="กรอกเลขบัตรประชาชน" />
 
             <p>ตรวจสุขภาพ</p>
-            <div>
-              <label><input type="radio" name="healthCheck" value="first" /> ตรวจสุขภาพครั้งแรก</label>
-            </div>
-            <div>
-              <label><input type="radio" name="healthCheck" value="annial" /> ตรวจประจำปี</label>
-            </div>
-            <div>
+            <div className="radio-group">
+              <label><input type="radio" name="healthCheck" value="first" /> ตรวจสุขภาพครั้งแรก (ให้เสร็จสิ้นภายใน 30 วัน นับแต่วันที่รับลูกจ้างเข้าทำงาน)</label>
+              <label><input type="radio" name="healthCheck" value="annual" /> ตรวจประจำปี</label>
               <label><input type="radio" name="healthCheck" value="changeJob" /> ตรวจเปลี่ยนงาน</label>
-            </div>
-            <div>
               <label><input type="radio" name="healthCheck" value="history" /> ตรวจตามประวัติความจำเป็น</label>
             </div>
 
