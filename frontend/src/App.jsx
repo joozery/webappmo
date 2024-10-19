@@ -23,13 +23,18 @@ function Login() { // เปลี่ยนชื่อคอมโพเนน�
 
       const data = await response.json();
 
+      console.log('Response data:', data);  // ตรวจสอบข้อมูลที่ได้รับจาก backend
+
       if (response.ok) {
         setMessage(data.message);
+        console.log('Login successful, navigating to dashboard...');
         navigate('/dashboard'); // นำทางไปยังหน้า Dashboard หลังจาก login สำเร็จ
       } else {
         setMessage(data.error);
+        console.log('Login failed:', data.error);
       }
     } catch (error) {
+      console.error('เกิดข้อผิดพลาดในการเชื่อมต่อกับเซิร์ฟเวอร์', error);
       setMessage('เกิดข้อผิดพลาดในการเชื่อมต่อกับเซิร์ฟเวอร์');
     }
   };
@@ -68,7 +73,7 @@ function Login() { // เปลี่ยนชื่อคอมโพเนน�
           </form>
         </div>
         <div className="welcome-message">
-          <h2>ยินดีตอนรับกลับมา</h2>
+          <h2>ยินดีต้อนรับกลับมา</h2>
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
         </div>
       </div>
