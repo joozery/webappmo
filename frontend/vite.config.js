@@ -8,7 +8,8 @@ export default defineConfig({
   build: {
     outDir: 'dist', // กำหนดโฟลเดอร์สำหรับผลลัพธ์การ build (Netlify จะใช้โฟลเดอร์นี้ในการ deploy)
     rollupOptions: {
-      input: './index.html' // กำหนด entry point เป็น index.html
+      input: './index.html', // กำหนด entry point เป็น index.html
+      external: ['react-icons'] // บอกให้ rollup ไม่รวม react-icons ในบันเดิล
     }
   },
   server: {
