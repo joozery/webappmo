@@ -1,3 +1,27 @@
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  font-weight: 500;
+  color: #646cff;
+  text-decoration: inherit;
+}
+a:hover {
+  color: #535bf2;
+}
+
 body, html {
   margin: 0;
   padding: 0;
@@ -9,9 +33,9 @@ body, html {
   display: flex;
   height: 800px;
   width: 1440px;
-  border: 2px solid #ccc; /* เพิ่ม border ให้กับ container */
-  border-radius: 16px; /* เพิ่มความโค้งมน */
-  overflow: hidden; /* ป้องกันไม่ให้เนื้อหาล้นขอบ */
+  border: 2px solid #ccc; 
+  border-radius: 16px; 
+  overflow: hidden; 
 }
 
 .sidebar {
@@ -22,8 +46,8 @@ body, html {
   flex-direction: column;
   justify-content: space-between;
   padding: 20px;
-  border-top-left-radius: 16px; /* ทำให้มุมด้านบนโค้งมน */
-  border-bottom-left-radius: 16px; /* ทำให้มุมด้านล่างโค้งมน */
+  border-top-left-radius: 16px; 
+  border-bottom-left-radius: 16px; 
 }
 
 .menu {
@@ -32,19 +56,19 @@ body, html {
 }
 
 .menu li {
-  margin-bottom: 15px; /* เพิ่มระยะห่างระหว่างไอเท็มเมนู */
+  margin-bottom: 15px; 
 }
 
 .menu li a {
   text-decoration: none;
   color: #ffffff;
-  display: flex; /* แสดงไอคอนและข้อความในบรรทัดเดียวกัน */
+  display: flex; 
   align-items: center;
   padding: 5px;
 }
 
 .menu li a i {
-  margin-right: 20px; /* เพิ่มระยะห่างระหว่างไอคอนกับข้อความ */
+  margin-right: 20px; 
 }
 
 .menu li a:hover {
@@ -62,8 +86,8 @@ body, html {
   flex: 1;
   padding: 20px;
   background-color: #f4f6f8;
-  border-top-right-radius: 16px; /* ทำให้มุมด้านบนโค้งมน */
-  border-bottom-right-radius: 16px; /* ทำให้มุมด้านล่างโค้งมน */
+  border-top-right-radius: 16px; 
+  border-bottom-right-radius: 16px; 
 }
 
 .header {
@@ -162,12 +186,17 @@ table tbody tr:hover {
 /* จัด input ให้อยู่ในบรรทัดเดียวกัน */
 .form-row {
   display: flex;
-  flex-direction: column;
-  gap: 10px; /* ระยะห่างระหว่าง input fields */
+  justify-content: space-between; /* จัดเรียงช่องให้มีระยะห่างระหว่างกัน */
+  gap: 20px; /* ระยะห่างระหว่างช่องกรอกข้อมูล */
   margin-bottom: 20px;
 }
 
+.form-row-half {
+  flex: 1; /* ทำให้แต่ละ input ครอบครองพื้นที่เท่าๆ กัน */
+}
+
 .form-row label {
+  display: block;
   margin-bottom: 5px;
 }
 

@@ -62,29 +62,41 @@ const Dashboard = () => {
 
             {/* แถวที่มี input fields อยู่ในบรรทัดเดียวกัน */}
             <div className="form-row">
-              <label>วัน เดือน ปีเกิด:</label>
-              <input type="date" name="dob" value={formData.dob} onChange={handleChange} />
+              <div className="form-row-half">
+                <label>วัน เดือน ปีเกิด:</label>
+                <input type="date" name="dob" value={formData.dob} onChange={handleChange} />
+              </div>
 
-              <label>เพศ:</label>
-              <select name="gender" value={formData.gender} onChange={handleChange}>
-                <option value="">เลือกเพศ</option>
-                <option value="ชาย">ชาย</option>
-                <option value="หญิง">หญิง</option>
-              </select>
+              <div className="form-row-half">
+                <label>เพศ:</label>
+                <select name="gender" value={formData.gender} onChange={handleChange}>
+                  <option value="">เลือกเพศ</option>
+                  <option value="ชาย">ชาย</option>
+                  <option value="หญิง">หญิง</option>
+                </select>
+              </div>
 
-              <label>วันที่เข้าทำงาน:</label>
-              <input type="date" name="startDate" value={formData.startDate} onChange={handleChange} />
+              <div className="form-row-half">
+                <label>วันที่เข้าทำงาน:</label>
+                <input type="date" name="startDate" value={formData.startDate} onChange={handleChange} />
+              </div>
             </div>
 
             <label>เลขบัตรประชาชน:</label>
             <input type="text" name="idNumber" value={formData.idNumber} onChange={handleChange} placeholder="กรอกเลขบัตรประชาชน" />
 
             <h3>แพทย์ผู้ทำการตรวจสุขภาพ</h3>
-            <label>ชื่อแพทย์:</label>
-            <input type="text" name="doctorName" value={formData.doctorName} onChange={handleChange} placeholder="กรอกชื่อแพทย์" />
+            <div className="form-row">
+              <div className="form-row-half">
+                <label>ชื่อแพทย์:</label>
+                <input type="text" name="doctorName" value={formData.doctorName} onChange={handleChange} placeholder="กรอกชื่อแพทย์" />
+              </div>
 
-            <label>โรงพยาบาล:</label>
-            <input type="text" name="hospital" value={formData.hospital} onChange={handleChange} placeholder="กรอกชื่อโรงพยาบาล" />
+              <div className="form-row-half">
+                <label>โรงพยาบาล:</label>
+                <input type="text" name="hospital" value={formData.hospital} onChange={handleChange} placeholder="กรอกชื่อโรงพยาบาล" />
+              </div>
+            </div>
 
             <h3>ชื่อหน่วยบริการตรวจสุขภาพ</h3>
             <label>หน่วยบริการ:</label>
