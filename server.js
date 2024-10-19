@@ -19,37 +19,43 @@ app.use(cors({
 // สร้างการเชื่อมต่อฐานข้อมูล SQLite
 const db = new sqlite3.Database('./users.db', (err) => {
   if (err) {
-    console.error('Could not connect to database', err);
+    console.error('❌ Could not connect to database:', err);
   } else {
-    console.log('Connected to SQLite database');
+    console.log('✅ Connected to SQLite database');
   }
 });
 
 // ตรวจสอบว่าตาราง users มีอยู่แล้วหรือไม่ ถ้าไม่มีก็สร้างขึ้นมา
 db.run('CREATE TABLE IF NOT EXISTS users (id INTEGER PRIMARY KEY, email TEXT, password TEXT)', (err) => {
   if (err) {
-    console.error('Error creating table:', err);
+    console.error('❌ Error creating table:', err);
   } else {
-    console.log('Users table ready or already exists.');
+    console.log('✅ Users table is ready or already exists.');
   }
 });
 
 // API สำหรับ login
 app.post('/login', (req, res) => {
   const { email, password } = req.body;
+  
+  console.log(`🔍 Login attempt with email: ${email}`);
 
   if (!email || !password) {
+    console.log('⚠️ Missing email or password');
     return res.status(400).json({ error: 'กรุณากรอกอีเมลและรหัสผ่าน' });
   }
 
   db.get('SELECT * FROM users WHERE email = ? AND password = ?', [email, password], (err, row) => {
     if (err) {
+      console.error('❌ Database error:', err);
       return res.status(500).json({ error: 'เกิดข้อผิดพลาดในระบบ' });
     }
 
     if (row) {
+      console.log('✅ Login successful');
       res.status(200).json({ message: 'เข้าสู่ระบบสำเร็จ' });
     } else {
+      console.log('⚠️ Invalid email or password');
       res.status(401).json({ error: 'อีเมลหรือรหัสผ่านไม่ถูกต้อง' });
     }
   });
@@ -57,10 +63,11 @@ app.post('/login', (req, res) => {
 
 // ตรวจสอบเส้นทางไม่ถูกต้อง (เพื่อช่วย debug)
 app.use((req, res, next) => {
+  console.log(`⚠️ Invalid route: ${req.path}`);
   res.status(404).json({ error: 'เส้นทางไม่ถูกต้อง' });
 });
 
 // เริ่มต้นเซิร์ฟเวอร์
 app.listen(port, () => {
-  console.log(`Server running on port ${port}`);
+  console.log(`🚀 Server running on port ${port}`);
 });
