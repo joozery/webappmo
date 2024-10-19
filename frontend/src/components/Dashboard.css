@@ -1,4 +1,3 @@
-/* CSS สำหรับการจัดวางองค์ประกอบของ Dashboard */
 body, html {
   margin: 0;
   padding: 0;
@@ -156,6 +155,13 @@ table tbody tr:hover {
   display: block;
   font-weight: bold;
   margin-bottom: 5px;
+}
+
+/* จัด input ให้อยู่ในบรรทัดเดียวกัน */
+.form-row {
+  display: flex;
+  gap: 20px; /* ระยะห่างระหว่าง input fields */
+  margin-bottom: 20px;
 }
 
 .form-container input, .form-container select {

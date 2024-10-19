@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import './Dashboard.css';
-// นำเข้าไอคอนจาก react-icons
 import { FaHistory, FaHeadphonesAlt, FaEye, FaLungs, FaFlask, FaChartBar, FaSignOutAlt } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
 
@@ -8,12 +7,10 @@ const Dashboard = () => {
   const navigate = useNavigate();
 
   const handleLogout = () => {
-    // ล้างข้อมูลการเข้าสู่ระบบออก (ตัวอย่าง: ลบ token ใน localStorage)
-    localStorage.removeItem('authToken'); // ลบข้อมูลการเข้าสู่ระบบ
-    navigate('/'); // นำผู้ใช้กลับไปที่หน้า Login
+    localStorage.removeItem('authToken');
+    navigate('/');
   };
 
-  // State สำหรับเก็บค่าจากฟอร์ม
   const [formData, setFormData] = useState({
     name: '',
     dob: '',
@@ -27,12 +24,10 @@ const Dashboard = () => {
     phone: ''
   });
 
-  // ฟังก์ชันสำหรับอัพเดตค่าเมื่อกรอกข้อมูลใน input fields
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  // ฟังก์ชันเมื่อกดปุ่มบันทึก
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log('ข้อมูลที่กรอก:', formData);
@@ -65,18 +60,21 @@ const Dashboard = () => {
             <label>ชื่อ-นามสกุล:</label>
             <input type="text" name="name" value={formData.name} onChange={handleChange} placeholder="กรอกชื่อ-นามสกุล" />
 
-            <label>วัน เดือน ปีเกิด:</label>
-            <input type="date" name="dob" value={formData.dob} onChange={handleChange} />
+            {/* แถวที่มี input fields อยู่ในบรรทัดเดียวกัน */}
+            <div className="form-row">
+              <label>วัน เดือน ปีเกิด:</label>
+              <input type="date" name="dob" value={formData.dob} onChange={handleChange} />
 
-            <label>เพศ:</label>
-            <select name="gender" value={formData.gender} onChange={handleChange}>
-              <option value="">เลือกเพศ</option>
-              <option value="ชาย">ชาย</option>
-              <option value="หญิง">หญิง</option>
-            </select>
+              <label>เพศ:</label>
+              <select name="gender" value={formData.gender} onChange={handleChange}>
+                <option value="">เลือกเพศ</option>
+                <option value="ชาย">ชาย</option>
+                <option value="หญิง">หญิง</option>
+              </select>
 
-            <label>วันที่เข้าทำงาน:</label>
-            <input type="date" name="startDate" value={formData.startDate} onChange={handleChange} />
+              <label>วันที่เข้าทำงาน:</label>
+              <input type="date" name="startDate" value={formData.startDate} onChange={handleChange} />
+            </div>
 
             <label>เลขบัตรประชาชน:</label>
             <input type="text" name="idNumber" value={formData.idNumber} onChange={handleChange} placeholder="กรอกเลขบัตรประชาชน" />
