@@ -10,6 +10,9 @@ body, html {
   display: flex;
   height: 800px;
   width: 1440px;
+  border: 2px solid #ccc; /* เพิ่ม border ให้กับ container */
+  border-radius: 16px; /* เพิ่มความโค้งมน */
+  overflow: hidden; /* ป้องกันไม่ให้เนื้อหาล้นขอบ */
 }
 
 .sidebar {
@@ -20,6 +23,8 @@ body, html {
   flex-direction: column;
   justify-content: space-between;
   padding: 20px;
+  border-top-left-radius: 16px; /* ทำให้มุมด้านบนโค้งมน */
+  border-bottom-left-radius: 16px; /* ทำให้มุมด้านล่างโค้งมน */
 }
 
 .menu {
@@ -28,15 +33,19 @@ body, html {
 }
 
 .menu li {
-  margin: 20px 0;
+  margin-bottom: 15px; /* เพิ่มระยะห่างระหว่างไอเท็มเมนู */
 }
 
 .menu li a {
-  color: white;
   text-decoration: none;
-  display: flex;
+  color: #ffffff;
+  display: flex; /* แสดงไอคอนและข้อความในบรรทัดเดียวกัน */
   align-items: center;
-  font-size: 16px;
+  padding: 10px;
+}
+
+.menu li a i {
+  margin-right: 10px; /* เพิ่มระยะห่างระหว่างไอคอนกับข้อความ */
 }
 
 .menu li a:hover {
@@ -46,8 +55,7 @@ body, html {
 }
 
 .menu li a.active {
-  background-color: #2c3e50;
-  padding: 10px;
+  background-color: #1d2b3a;
   border-radius: 8px;
 }
 
@@ -55,6 +63,8 @@ body, html {
   flex: 1;
   padding: 20px;
   background-color: #f4f6f8;
+  border-top-right-radius: 16px; /* ทำให้มุมด้านบนโค้งมน */
+  border-bottom-right-radius: 16px; /* ทำให้มุมด้านล่างโค้งมน */
 }
 
 .header {
