@@ -1,18 +1,18 @@
 import React, { useState } from 'react';
-import { BrowserRouter as Router, Route, Routes, Link, useNavigate } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes, useNavigate } from 'react-router-dom';
 import './App.css';
 
-function Login() { // เปลี่ยนชื่อคอมโพเนนต์จาก App เป็น Login เพื่อความชัดเจน
+function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [message, setMessage] = useState('');
-  const navigate = useNavigate(); // ใช้สำหรับการนำทางไปยังหน้าอื่น
+  const navigate = useNavigate();
 
   const handleLogin = async (e) => {
     e.preventDefault();
 
     try {
-      const backendUrl = process.env.REACT_APP_BACKEND_URL || 'https://webappmo.onrender.com'; // ใช้ URL จาก environment
+      const backendUrl = process.env.REACT_APP_BACKEND_URL || 'https://webappmo.onrender.com';
       const response = await fetch(`${backendUrl}/login`, {
         method: 'POST',
         headers: {
@@ -23,7 +23,7 @@ function Login() { // เปลี่ยนชื่อคอมโพเนน�
 
       const data = await response.json();
 
-      console.log('Response data:', data);  // ตรวจสอบข้อมูลที่ได้รับจาก backend
+      console.log('Response data:', data); // ตรวจสอบข้อมูลที่ได้รับจาก backend
 
       if (response.ok) {
         setMessage(data.message);
@@ -52,6 +52,7 @@ function Login() { // เปลี่ยนชื่อคอมโพเนน�
                 placeholder="E-mail"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
+                required // เพิ่มการตรวจสอบว่าเป็นฟิลด์ที่จำเป็นต้องกรอก
               />
             </div>
             <div className="input-container">
@@ -60,6 +61,7 @@ function Login() { // เปลี่ยนชื่อคอมโพเนน�
                 placeholder="Password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
+                required // เพิ่มการตรวจสอบว่าเป็นฟิลด์ที่จำเป็นต้องกรอก
               />
             </div>
             <div className="options">
