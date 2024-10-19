@@ -1,76 +1,65 @@
 import React from 'react';
+import { Layout, Menu, Table, Input, Button } from 'antd';
+import { UserOutlined, FileOutlined } from '@ant-design/icons';
 import './Dashboard.css';
 
-function Dashboard() {
+const { Header, Content, Sider } = Layout;
+const { Search } = Input;
+
+const Dashboard = () => {
+  const columns = [
+    { title: 'Customer Name', dataIndex: 'name', key: 'name' },
+    { title: 'Company', dataIndex: 'company', key: 'company' },
+    { title: 'Phone Number', dataIndex: 'phone', key: 'phone' },
+    { title: 'Email', dataIndex: 'email', key: 'email' },
+    { title: 'Country', dataIndex: 'country', key: 'country' },
+    { title: 'Status', dataIndex: 'status', key: 'status', render: (status) => (
+      <span className={status === 'Active' ? 'status-active' : 'status-inactive'}>
+        {status}
+      </span>
+    ) },
+  ];
+
+  const data = [
+    { key: '1', name: 'Jane Cooper', company: 'Microsoft', phone: '(225) 555-0118', email: 'jane@microsoft.com', country: 'United States', status: 'Active' },
+    { key: '2', name: 'Floyd Miles', company: 'Yahoo', phone: '(205) 555-0100', email: 'floyd@yahoo.com', country: 'Kiribati', status: 'Inactive' },
+    // เพิ่มข้อมูลอื่นๆ ที่ต้องการ
+  ];
+
   return (
-    <div className="dashboard-container">
-      <aside className="sidebar">
-        <div className="sidebar-header">
-          <h1>Dashboard</h1>
+    <Layout style={{ minHeight: '100vh' }}>
+      <Sider>
+        <div className="logo">Dashboard</div>
+        <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline">
+          <Menu.Item key="1" icon={<UserOutlined />}>ประวัติ</Menu.Item>
+          <Menu.Item key="2" icon={<UserOutlined />}>หู</Menu.Item>
+          <Menu.Item key="3" icon={<UserOutlined />}>ตา</Menu.Item>
+          <Menu.Item key="4" icon={<UserOutlined />}>ปอด</Menu.Item>
+          <Menu.Item key="5" icon={<FileOutlined />}>สารเคมี</Menu.Item>
+          <Menu.Item key="6" icon={<FileOutlined />}>สรุป</Menu.Item>
+        </Menu>
+        <Button type="primary" className="upgrade-btn">Upgrade to Pro</Button>
+        <div className="user-info">
+          <p>Evano</p>
+          <p>Project Manager</p>
         </div>
-        <nav>
-          <ul>
-            <li className="active">ประวัติ</li>
-            <li>หู</li>
-            <li>ตา</li>
-            <li>ปอด</li>
-            <li>สารเคมี</li>
-            <li>สรุป</li>
-          </ul>
-        </nav>
-        <div className="sidebar-footer">
-          <button className="pro-btn">Upgrade to Pro</button>
-          <div className="profile">
-            <span>Evano</span>
-            <small>Project Manager</small>
+      </Sider>
+
+      <Layout>
+        <Header className="site-layout-background" style={{ padding: 0 }}>
+          <div className="header-content">
+            <h1>Hello user 👋</h1>
+            <Search placeholder="Search..." style={{ width: 200 }} />
           </div>
-        </div>
-      </aside>
-      
-      <main className="main-content">
-        <header className="dashboard-header">
-          <h2>Hello user 👋</h2>
-          <input type="text" placeholder="Search..." className="search-input" />
-        </header>
-        
-        <section className="customers-section">
-          <h3>All Customers</h3>
-          <span>Active Members</span>
-          <table>
-            <thead>
-              <tr>
-                <th>Customer Name</th>
-                <th>Company</th>
-                <th>Phone Number</th>
-                <th>Email</th>
-                <th>Country</th>
-                <th>Status</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Jane Cooper</td>
-                <td>Microsoft</td>
-                <td>(225) 555-0118</td>
-                <td>jane@microsoft.com</td>
-                <td>United States</td>
-                <td><span className="status active">Active</span></td>
-              </tr>
-              <tr>
-                <td>Floyd Miles</td>
-                <td>Yahoo</td>
-                <td>(205) 555-0100</td>
-                <td>floyd@yahoo.com</td>
-                <td>Kiribati</td>
-                <td><span className="status inactive">Inactive</span></td>
-              </tr>
-              {/* Add more rows as needed */}
-            </tbody>
-          </table>
-        </section>
-      </main>
-    </div>
+        </Header>
+        <Content style={{ margin: '16px' }}>
+          <h2>All Customers</h2>
+          <p>Active Members</p>
+          <Table columns={columns} dataSource={data} pagination={{ pageSize: 5 }} />
+        </Content>
+      </Layout>
+    </Layout>
   );
-}
+};
 
 export default Dashboard;
