@@ -1,7 +1,7 @@
 import React from 'react';
 import './Dashboard.css';
 // นำเข้าไอคอนจาก react-icons
-import { FaHistory, FaEarListen, FaEye, FaLungs, FaFlask, FaChartBar, FaSignOutAlt } from 'react-icons/fa';
+import { FaHistory, FaHeadphonesAlt, FaEye, FaLungs, FaFlask, FaChartBar, FaSignOutAlt } from 'react-icons/fa';
 
 const Dashboard = () => {
   return (
@@ -9,14 +9,14 @@ const Dashboard = () => {
       {/* Sidebar */}
       <aside className="sidebar">
         <ul className="menu">
-          <li><a href="#" className="active"><FaHistory className="icon" /> ประวัติ</a></li>
-          <li><a href="#"><FaEarListen className="icon" /> หู</a></li>
-          <li><a href="#"><FaEye className="icon" /> ตา</a></li>
-          <li><a href="#"><FaLungs className="icon" /> ปอด</a></li>
-          <li><a href="#"><FaFlask className="icon" /> สารเคมี</a></li>
-          <li><a href="#"><FaChartBar className="icon" /> สรุป</a></li>
+          <li><a href="#" className="active"><FaHistory /> ประวัติ</a></li>
+          <li><a href="#"><FaHeadphonesAlt /> หู</a></li>
+          <li><a href="#"><FaEye /> ตา</a></li>
+          <li><a href="#"><FaLungs /> ปอด</a></li>
+          <li><a href="#"><FaFlask /> สารเคมี</a></li>
+          <li><a href="#"><FaChartBar /> สรุป</a></li>
         </ul>
-        <button className="logout-btn"><FaSignOutAlt className="icon" /> Logout</button>
+        <button className="logout-btn"><FaSignOutAlt /> Logout</button>
       </aside>
 
       {/* Content */}
