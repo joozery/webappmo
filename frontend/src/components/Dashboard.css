@@ -162,8 +162,20 @@ table tbody tr:hover {
 /* จัด input ให้อยู่ในบรรทัดเดียวกัน */
 .form-row {
   display: flex;
-  gap: 20px; /* ระยะห่างระหว่าง input fields */
+  flex-direction: column;
+  gap: 10px; /* ระยะห่างระหว่าง input fields */
   margin-bottom: 20px;
+}
+
+.form-row label {
+  margin-bottom: 5px;
+}
+
+.form-row input, .form-row select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
 }
 
 .form-container input, .form-container select {
