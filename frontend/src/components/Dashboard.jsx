@@ -32,39 +32,52 @@ const Dashboard = () => {
 
   return (
     <div className="dashboard">
-      <header className="dashboard-header">
-        <h1>Hello user 👋</h1>
-      </header>
-      <section className="customer-list">
-        <h2>All Customers</h2>
-        <p>Active Members</p>
-        <table>
-          <thead>
-            <tr>
-              <th>Customer Name</th>
-              <th>Company</th>
-              <th>Phone Number</th>
-              <th>Email</th>
-              <th>Country</th>
-              <th>Status</th>
-            </tr>
-          </thead>
-          <tbody>
-            {customers.map((customer, index) => (
-              <tr key={index}>
-                <td>{customer.name}</td>
-                <td>{customer.company}</td>
-                <td>{customer.phone}</td>
-                <td>{customer.email}</td>
-                <td>{customer.country}</td>
-                <td className={`status ${customer.status.toLowerCase()}`}>
-                  {customer.status}
-                </td>
+      <aside className="sidebar">
+        <h2>เมนู</h2>
+        <ul>
+          <li><a href="#">ประวัติ</a></li>
+          <li><a href="#">หู</a></li>
+          <li><a href="#">ตา</a></li>
+          <li><a href="#">ปอด</a></li>
+          <li><a href="#">สารเคมี</a></li>
+          <li><a href="#">สรุป</a></li>
+        </ul>
+      </aside>
+      <main className="dashboard-content">
+        <header className="dashboard-header">
+          <h1>Hello user 👋</h1>
+        </header>
+        <section className="customer-list">
+          <h2>All Customers</h2>
+          <p>Active Members</p>
+          <table>
+            <thead>
+              <tr>
+                <th>Customer Name</th>
+                <th>Company</th>
+                <th>Phone Number</th>
+                <th>Email</th>
+                <th>Country</th>
+                <th>Status</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
-      </section>
+            </thead>
+            <tbody>
+              {customers.map((customer, index) => (
+                <tr key={index}>
+                  <td>{customer.name}</td>
+                  <td>{customer.company}</td>
+                  <td>{customer.phone}</td>
+                  <td>{customer.email}</td>
+                  <td>{customer.country}</td>
+                  <td className={`status ${customer.status.toLowerCase()}`}>
+                    {customer.status}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </section>
+      </main>
     </div>
   );
 };

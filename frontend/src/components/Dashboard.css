@@ -1,6 +1,35 @@
 .dashboard {
+  display: flex;
+}
+
+.sidebar {
+  width: 200px; /* กำหนดความกว้างของ Sidebar */
+  background-color: #f8f8f8;
   padding: 20px;
-  background-color: #f9f9f9;
+  border-right: 1px solid #ddd; /* เพิ่มเส้นขอบด้านขวา */
+}
+
+.sidebar h2 {
+  margin-bottom: 20px;
+}
+
+.sidebar ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.sidebar li {
+  margin-bottom: 10px;
+}
+
+.sidebar a {
+  text-decoration: none;
+  color: #333;
+}
+
+.dashboard-content {
+  flex: 1; /* ทำให้พื้นที่หลักขยายเต็มที่ */
+  padding: 20px;
 }
 
 .dashboard-header {
