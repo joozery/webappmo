@@ -39,18 +39,20 @@ const Dashboard = () => {
   };
 
   return (
-    <div>
+    <div className="container">
       {/* Sidebar */}
       <aside className="sidebar">
         <ul className="menu">
-          <li><a href="#" className="active"><FaHistory /> ประวัติ</a></li>
-          <li><a href="#"><FaHeadphonesAlt /> หู</a></li>
-          <li><a href="#"><FaEye /> ตา</a></li>
-          <li><a href="#"><FaLungs /> ปอด</a></li>
-          <li><a href="#"><FaFlask /> สารเคมี</a></li>
-          <li><a href="#"><FaChartBar /> สรุป</a></li>
+          <li><a href="#" className="active"><FaHistory style={{ marginRight: '10px' }} /> ประวัติ</a></li>
+          <li><a href="#"><FaHeadphonesAlt style={{ marginRight: '10px' }} /> หู</a></li>
+          <li><a href="#"><FaEye style={{ marginRight: '10px' }} /> ตา</a></li>
+          <li><a href="#"><FaLungs style={{ marginRight: '10px' }} /> ปอด</a></li>
+          <li><a href="#"><FaFlask style={{ marginRight: '10px' }} /> สารเคมี</a></li>
+          <li><a href="#"><FaChartBar style={{ marginRight: '10px' }} /> สรุป</a></li>
         </ul>
-        <button className="logout-btn" onClick={handleLogout}><FaSignOutAlt /> ออกจากระบบ</button>
+        <button className="logout-btn" onClick={handleLogout}>
+          <FaSignOutAlt style={{ marginRight: '10px' }} /> ออกจากระบบ
+        </button>
       </aside>
 
       {/* Content */}
