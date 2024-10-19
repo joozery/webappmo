@@ -11,13 +11,9 @@ function Login() {
   const handleLogin = async (e) => {
     e.preventDefault();
 
-    if (!email || !password) {
-      setMessage('กรุณากรอกอีเมลและรหัสผ่าน');
-      return; // หยุดการดำเนินการถ้าฟิลด์ว่าง
-    }
-
     try {
-      const backendUrl = process.env.REACT_APP_BACKEND_URL || 'https://webappmo.onrender.com';
+      // เปลี่ยน URL ที่นี่
+      const backendUrl = 'https://webappmo.onrender.com'; // URL จริงสำหรับ backend
       const response = await fetch(`${backendUrl}/login`, {
         method: 'POST',
         headers: {
@@ -35,7 +31,7 @@ function Login() {
         console.log('Login successful, navigating to dashboard...');
         navigate('/dashboard'); // นำทางไปยังหน้า Dashboard หลังจาก login สำเร็จ
       } else {
-        setMessage(data.error || 'เกิดข้อผิดพลาดในการเข้าสู่ระบบ');
+        setMessage(data.error);
         console.log('Login failed:', data.error);
       }
     } catch (error) {
@@ -57,7 +53,7 @@ function Login() {
                 placeholder="E-mail"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                required
+                required // เพิ่มการตรวจสอบว่าเป็นฟิลด์ที่จำเป็นต้องกรอก
               />
             </div>
             <div className="input-container">
@@ -66,7 +62,7 @@ function Login() {
                 placeholder="Password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                required
+                required // เพิ่มการตรวจสอบว่าเป็นฟิลด์ที่จำเป็นต้องกรอก
               />
             </div>
             <div className="options">
@@ -76,7 +72,7 @@ function Login() {
               <a href="#">ลืมรหัสผ่าน?</a>
             </div>
             <button type="submit">เข้าสู่ระบบ</button>
-            {message && <p className="error-message">{message}</p>} {/* แสดงข้อความข้อผิดพลาด */}
+            <p>{message}</p>
           </form>
         </div>
         <div className="welcome-message">
