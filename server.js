@@ -16,6 +16,8 @@ app.use(cors({
   credentials: true
 }));
 
+console.log('CORS configured for:', process.env.FRONTEND_URL);
+
 // สร้างการเชื่อมต่อฐานข้อมูล SQLite
 const db = new sqlite3.Database('./users.db', (err) => {
   if (err) {
