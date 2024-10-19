@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Route, Routes, useNavigate } from 'react-router-dom';
 import './App.css';
-import Dashboard from './Dashboard'; // นำเข้า Dashboard ที่สร้างไว้
+import Dashboard from './src/components/Dashboard';
 
 function Login() {
   const [email, setEmail] = useState('');
