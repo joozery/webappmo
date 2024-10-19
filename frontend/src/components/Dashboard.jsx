@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Dashboard.css';
 // นำเข้าไอคอนจาก react-icons
 import { FaHistory, FaHeadphonesAlt, FaEye, FaLungs, FaFlask, FaChartBar, FaSignOutAlt } from 'react-icons/fa';
@@ -11,6 +11,31 @@ const Dashboard = () => {
     // ล้างข้อมูลการเข้าสู่ระบบออก (ตัวอย่าง: ลบ token ใน localStorage)
     localStorage.removeItem('authToken'); // ลบข้อมูลการเข้าสู่ระบบ
     navigate('/'); // นำผู้ใช้กลับไปที่หน้า Login
+  };
+
+  // State สำหรับเก็บค่าจากฟอร์ม
+  const [formData, setFormData] = useState({
+    name: '',
+    dob: '',
+    gender: '',
+    startDate: '',
+    idNumber: '',
+    doctorName: '',
+    hospital: '',
+    serviceUnit: '',
+    address: '',
+    phone: ''
+  });
+
+  // ฟังก์ชันสำหรับอัพเดตค่าเมื่อกรอกข้อมูลใน input fields
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  // ฟังก์ชันเมื่อกดปุ่มบันทึก
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log('ข้อมูลที่กรอก:', formData);
   };
 
   return (
@@ -33,24 +58,48 @@ const Dashboard = () => {
         <h1>กรอกชื่อผู้รับบริการ</h1>
 
         <div className="form-container">
-          <h2>ประวัติส่วนตัว</h2>
-          <p>ชื่อ-นามสกุล: ________________ วัน เดือน ปีเกิด: __________________ เพศ: ☐ ชาย ☐ หญิง</p>
-          <p>วันที่เข้าทำงาน: _____________</p>
-          <p>1. เลขบัตรประชาชน: ___________________</p>
-          <p>ตรวจสุขภาพครั้งแรก ☐ ตรวจประจำปี ☐ ตรวจเปลี่ยนงาน ☐ ตรวจตามประวัติความเจ็บป่วย</p>
-          <p>วัน/ที่ตรวจสุขภาพ: __________________________</p>
+          <form onSubmit={handleSubmit}>
+            <h2>ประวัติส่วนตัว</h2>
+            <label>ชื่อ-นามสกุล:</label>
+            <input type="text" name="name" value={formData.name} onChange={handleChange} placeholder="กรอกชื่อ-นามสกุล" />
 
-          <h3>แพทย์ผู้ทำการตรวจสุขภาพ</h3>
-          <p>ชื่อแพทย์: _____________________ โรงพยาบาล: _____________________</p>
+            <label>วัน เดือน ปีเกิด:</label>
+            <input type="date" name="dob" value={formData.dob} onChange={handleChange} />
 
-          <h3>ชื่อหน่วยบริการตรวจสุขภาพ</h3>
-          <p>หน่วยบริการ: ____________________</p>
-          <p>ที่อยู่: ____________________________</p>
-          <p>เบอร์โทร: _________________________</p>
+            <label>เพศ:</label>
+            <select name="gender" value={formData.gender} onChange={handleChange}>
+              <option value="">เลือกเพศ</option>
+              <option value="ชาย">ชาย</option>
+              <option value="หญิง">หญิง</option>
+            </select>
 
-          <div className="footer">
-            <button className="save-btn">บันทึก</button>
-          </div>
+            <label>วันที่เข้าทำงาน:</label>
+            <input type="date" name="startDate" value={formData.startDate} onChange={handleChange} />
+
+            <label>เลขบัตรประชาชน:</label>
+            <input type="text" name="idNumber" value={formData.idNumber} onChange={handleChange} placeholder="กรอกเลขบัตรประชาชน" />
+
+            <h3>แพทย์ผู้ทำการตรวจสุขภาพ</h3>
+            <label>ชื่อแพทย์:</label>
+            <input type="text" name="doctorName" value={formData.doctorName} onChange={handleChange} placeholder="กรอกชื่อแพทย์" />
+
+            <label>โรงพยาบาล:</label>
+            <input type="text" name="hospital" value={formData.hospital} onChange={handleChange} placeholder="กรอกชื่อโรงพยาบาล" />
+
+            <h3>ชื่อหน่วยบริการตรวจสุขภาพ</h3>
+            <label>หน่วยบริการ:</label>
+            <input type="text" name="serviceUnit" value={formData.serviceUnit} onChange={handleChange} placeholder="กรอกชื่อหน่วยบริการ" />
+
+            <label>ที่อยู่:</label>
+            <input type="text" name="address" value={formData.address} onChange={handleChange} placeholder="กรอกที่อยู่" />
+
+            <label>เบอร์โทร:</label>
+            <input type="text" name="phone" value={formData.phone} onChange={handleChange} placeholder="กรอกเบอร์โทร" />
+
+            <div className="footer">
+              <button className="save-btn" type="submit">บันทึก</button>
+            </div>
+          </form>
         </div>
       </div>
     </div>
