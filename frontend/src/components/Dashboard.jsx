@@ -1,55 +1,50 @@
 import React from 'react';
-import './Dashboard.css'; // ตรวจสอบว่ามีไฟล์ CSS นี้หรือยัง
+import './Dashboard.css'; // เพิ่มไฟล์ CSS ของคุณถ้าต้องการ
 
-function Dashboard() {
+const Dashboard = () => {
   return (
-    <div className="dashboard-container">
-      {/* Sidebar */}
-      <div className="sidebar">
+    <div className="dashboard">
+      <header className="dashboard-header">
+        <h1>แดชบอร์ด</h1>
+      </header>
+      <nav className="dashboard-menu">
         <ul>
-          <li>ประวัติ</li>
-          <li>หู</li>
-          <li>ตา</li>
-          <li>ปอด</li>
-          <li>สารเคมี</li>
-          <li>สรุป</li>
+          <li><a href="#history">ประวัติ</a></li>
+          <li><a href="#ear">หู</a></li>
+          <li><a href="#eye">ตา</a></li>
+          <li><a href="#lung">ปอด</a></li>
+          <li><a href="#chemistry">สารเคมี</a></li>
+          <li><a href="#summary">สรุป</a></li>
         </ul>
-      </div>
-
-      {/* เนื้อหาหลัก */}
-      <div className="content">
-        <h1>กรอกชื่อผู้รับบริการ</h1>
-        <form>
-          <div className="section">
-            <h2>ประวัติส่วนตัว</h2>
-            <label>ชื่อ-นามสกุล:</label>
-            <input type="text" name="name" />
-            
-            <label>วัน เดือน ปี เกิด:</label>
-            <input type="text" name="dob" />
-            
-            <label>เพศ:</label>
-            <input type="radio" name="gender" value="ชาย" /> ชาย
-            <input type="radio" name="gender" value="หญิง" /> หญิง
-          </div>
-
-          <div className="section">
-            <h2>การตรวจสุขภาพ</h2>
-            <label>แพทย์ผู้ทำการตรวจ:</label>
-            <input type="text" name="doctor_name" />
-            
-            <label>ชื่อหน่วยบริการ:</label>
-            <input type="text" name="service_unit" />
-            
-            <label>วันที่ตรวจสุขภาพ:</label>
-            <input type="date" name="checkup_date" />
-          </div>
-
-          <button type="submit" className="save-btn">Save</button>
-        </form>
-      </div>
+      </nav>
+      <main className="dashboard-content">
+        <section id="history">
+          <h2>ประวัติ</h2>
+          {/* เนื้อหาประวัติ */}
+        </section>
+        <section id="ear">
+          <h2>หู</h2>
+          {/* เนื้อหาหู */}
+        </section>
+        <section id="eye">
+          <h2>ตา</h2>
+          {/* เนื้อหาตา */}
+        </section>
+        <section id="lung">
+          <h2>ปอด</h2>
+          {/* เนื้อหาปอด */}
+        </section>
+        <section id="chemistry">
+          <h2>สารเคมี</h2>
+          {/* เนื้อหาสารเคมี */}
+        </section>
+        <section id="summary">
+          <h2>สรุป</h2>
+          {/* เนื้อหาสรุป */}
+        </section>
+      </main>
     </div>
   );
-}
+};
 
 export default Dashboard;

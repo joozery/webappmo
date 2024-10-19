@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Route, Routes, useNavigate } from 'react-router-dom';
 import './App.css';
+import Dashboard from './Dashboard'; // นำเข้า Dashboard ที่สร้างไว้
 
 function Login() {
   const [email, setEmail] = useState('');
@@ -12,7 +13,6 @@ function Login() {
     e.preventDefault();
 
     try {
-      // ใช้ URL จริงสำหรับ backend
       const backendUrl = 'https://webappmo.onrender.com'; 
       const response = await fetch(`${backendUrl}/login`, {
         method: 'POST',
@@ -24,7 +24,7 @@ function Login() {
 
       const data = await response.json();
 
-      console.log('Response data:', data); // ตรวจสอบข้อมูลที่ได้รับจาก backend
+      console.log('Response data:', data); 
 
       if (response.ok) {
         setMessage(data.message);
@@ -84,21 +84,12 @@ function Login() {
   );
 }
 
-function Dashboard() {
-  return (
-    <div>
-      <h1>Dashboard</h1>
-      <p>Welcome to your Dashboard!</p>
-    </div>
-  );
-}
-
 export default function Main() {
   return (
     <Router>
       <Routes>
         <Route path="/" element={<Login />} />
-        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/dashboard" element={<Dashboard />} /> {/* นำทางไปยังหน้า Dashboard */}
       </Routes>
     </Router>
   );
