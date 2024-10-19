@@ -139,6 +139,8 @@ table tbody tr:hover {
   padding: 20px;
   border-radius: 16px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow-y: auto;
+  max-height: 700px;
 }
 
 .form-container h2, .form-container h3 {
