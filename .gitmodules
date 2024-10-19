@@ -1,0 +1,3 @@
+[submodule "backend"]
+    path = backend
+    url = <valid_git_url>  # เปลี่ยนเป็น URL ที่ถูกต้องของ backend ของคุณ
