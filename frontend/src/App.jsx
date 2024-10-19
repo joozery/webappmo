@@ -12,7 +12,8 @@ function Login() {
     e.preventDefault();
 
     try {
-      const backendUrl = 'https://webappmo.onrender.com'; // URL จริงสำหรับ backend
+      // ใช้ URL จริงสำหรับ backend
+      const backendUrl = 'https://webappmo.onrender.com'; 
       const response = await fetch(`${backendUrl}/login`, {
         method: 'POST',
         headers: {
@@ -21,19 +22,18 @@ function Login() {
         body: JSON.stringify({ email, password }),
       });
 
-      // ตรวจสอบสถานะการตอบกลับจาก server
-      if (!response.ok) {
-        const errorData = await response.json();
-        setMessage(errorData.error || 'เกิดข้อผิดพลาดในการเข้าสู่ระบบ');
-        console.log('Login failed:', errorData.error);
-        return; // ออกจากฟังก์ชันหากไม่สำเร็จ
-      }
-
       const data = await response.json();
-      console.log('Response data:', data); // แสดงข้อมูลที่ได้รับจาก backend
-      setMessage(data.message); // แสดงข้อความตอบกลับจาก backend
-      console.log('Login successful, navigating to dashboard...');
-      navigate('/dashboard'); // นำทางไปยังหน้า Dashboard หลังจาก login สำเร็จ
+
+      console.log('Response data:', data); // ตรวจสอบข้อมูลที่ได้รับจาก backend
+
+      if (response.ok) {
+        setMessage(data.message);
+        console.log('Login successful, navigating to dashboard...');
+        navigate('/dashboard'); // นำทางไปยังหน้า Dashboard หลังจาก login สำเร็จ
+      } else {
+        setMessage(data.error);
+        console.log('Login failed:', data.error);
+      }
     } catch (error) {
       console.error('เกิดข้อผิดพลาดในการเชื่อมต่อกับเซิร์ฟเวอร์', error);
       setMessage('เกิดข้อผิดพลาดในการเชื่อมต่อกับเซิร์ฟเวอร์');
@@ -53,7 +53,7 @@ function Login() {
                 placeholder="E-mail"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                required // เพิ่มการตรวจสอบว่าเป็นฟิลด์ที่จำเป็นต้องกรอก
+                required
               />
             </div>
             <div className="input-container">
@@ -62,7 +62,7 @@ function Login() {
                 placeholder="Password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                required // เพิ่มการตรวจสอบว่าเป็นฟิลด์ที่จำเป็นต้องกรอก
+                required
               />
             </div>
             <div className="options">
