@@ -16,7 +16,7 @@ const Dashboard = () => {
           <li><a href="#"><FaFlask /> สารเคมี</a></li>
           <li><a href="#"><FaChartBar /> สรุป</a></li>
         </ul>
-        <button className="logout-btn"><FaSignOutAlt /> Logout</button>
+        <button className="logout-btn"><FaSignOutAlt /> ออกจากระบบ</button>
       </aside>
 
       {/* Content */}

@@ -41,10 +41,11 @@ body, html {
   color: #ffffff;
   display: flex; /* แสดงไอคอนและข้อความในบรรทัดเดียวกัน */
   align-items: center;
-  padding: 5px;
+  padding: 10px;
 }
 
 .menu li a i {
+  flex-shrink: 0;
   margin-right: 20px; /* เพิ่มระยะห่างระหว่างไอคอนกับข้อความ */
 }
 
