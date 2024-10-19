@@ -39,7 +39,7 @@ body, html {
 }
 
 .sidebar {
-  background-color: #646cff;
+  background-color: #25d366;
   width: 250px;
   color: white;
   display: flex;
@@ -114,7 +114,7 @@ body, html {
   position: absolute;
   right: 10px;
   top: 10px;
-  background: none;
+  background: #25d366;
   border: none;
   cursor: pointer;
 }
