@@ -1,22 +1,28 @@
-require('dotenv').config();  // เพิ่มบรรทัดนี้ที่ด้านบนสุด
+require('dotenv').config(); // เพิ่มบรรทัดนี้ที่ด้านบนสุด
 
 const express = require('express');
 const bodyParser = require('body-parser');
 const sqlite3 = require('sqlite3').verbose();
 const cors = require('cors');
 const app = express();
-const port = process.env.PORT || 3001;  // ใช้ process.env.PORT ที่มาจากไฟล์ .env
+const port = process.env.PORT || 3001; // ใช้ process.env.PORT ที่มาจากไฟล์ .env
 
 app.use(bodyParser.json());
 
 // ตั้งค่า CORS เพื่ออนุญาตให้ Frontend เชื่อมต่อได้
 app.use(cors({
-  origin: process.env.FRONTEND_URL || 'https://testpromomo.netlify.app',  // ใส่โดเมน frontend ของคุณ
+  origin: process.env.FRONTEND_URL || 'https://testpromomo.netlify.app', // ใส่โดเมน frontend ของคุณ
   methods: ['GET', 'POST'],
   credentials: true
 }));
 
 console.log('CORS configured for:', process.env.FRONTEND_URL);
+
+// Middleware สำหรับ logging ข้อมูลการร้องขอ
+app.use((req, res, next) => {
+  console.log(`Request Method: ${req.method}, Request Path: ${req.path}`);
+  next();
+});
 
 // สร้างการเชื่อมต่อฐานข้อมูล SQLite
 const db = new sqlite3.Database('./users.db', (err) => {
@@ -39,7 +45,7 @@ db.run('CREATE TABLE IF NOT EXISTS users (id INTEGER PRIMARY KEY, email TEXT, pa
 // API สำหรับ login
 app.post('/login', (req, res) => {
   const { email, password } = req.body;
-  
+
   console.log(`🔍 Login attempt with email: ${email}`);
 
   if (!email || !password) {
