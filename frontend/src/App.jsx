@@ -12,7 +12,6 @@ function Login() {
     e.preventDefault();
 
     try {
-      // เปลี่ยน URL ที่นี่
       const backendUrl = 'https://webappmo.onrender.com'; // URL จริงสำหรับ backend
       const response = await fetch(`${backendUrl}/login`, {
         method: 'POST',
@@ -22,18 +21,19 @@ function Login() {
         body: JSON.stringify({ email, password }),
       });
 
-      const data = await response.json();
-
-      console.log('Response data:', data); // ตรวจสอบข้อมูลที่ได้รับจาก backend
-
-      if (response.ok) {
-        setMessage(data.message);
-        console.log('Login successful, navigating to dashboard...');
-        navigate('/dashboard'); // นำทางไปยังหน้า Dashboard หลังจาก login สำเร็จ
-      } else {
-        setMessage(data.error);
-        console.log('Login failed:', data.error);
+      // ตรวจสอบสถานะการตอบกลับจาก server
+      if (!response.ok) {
+        const errorData = await response.json();
+        setMessage(errorData.error || 'เกิดข้อผิดพลาดในการเข้าสู่ระบบ');
+        console.log('Login failed:', errorData.error);
+        return; // ออกจากฟังก์ชันหากไม่สำเร็จ
       }
+
+      const data = await response.json();
+      console.log('Response data:', data); // แสดงข้อมูลที่ได้รับจาก backend
+      setMessage(data.message); // แสดงข้อความตอบกลับจาก backend
+      console.log('Login successful, navigating to dashboard...');
+      navigate('/dashboard'); // นำทางไปยังหน้า Dashboard หลังจาก login สำเร็จ
     } catch (error) {
       console.error('เกิดข้อผิดพลาดในการเชื่อมต่อกับเซิร์ฟเวอร์', error);
       setMessage('เกิดข้อผิดพลาดในการเชื่อมต่อกับเซิร์ฟเวอร์');
