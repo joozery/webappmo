@@ -2,8 +2,17 @@ import React from 'react';
 import './Dashboard.css';
 // นำเข้าไอคอนจาก react-icons
 import { FaHistory, FaHeadphonesAlt, FaEye, FaLungs, FaFlask, FaChartBar, FaSignOutAlt } from 'react-icons/fa';
+import { useNavigate } from 'react-router-dom';
 
 const Dashboard = () => {
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    // ล้างข้อมูลการเข้าสู่ระบบออก (ตัวอย่าง: ลบ token ใน localStorage)
+    localStorage.removeItem('authToken'); // ลบข้อมูลการเข้าสู่ระบบ
+    navigate('/'); // นำผู้ใช้กลับไปที่หน้า Login
+  };
+
   return (
     <div className="container">
       {/* Sidebar */}
@@ -16,29 +25,29 @@ const Dashboard = () => {
           <li><a href="#"><FaFlask /> สารเคมี</a></li>
           <li><a href="#"><FaChartBar /> สรุป</a></li>
         </ul>
-        <button className="logout-btn"><FaSignOutAlt /> ออกจากระบบ</button>
+        <button className="logout-btn" onClick={handleLogout}><FaSignOutAlt /> ออกจากระบบ</button>
       </aside>
 
       {/* Content */}
       <div className="content">
         <div className="header">
-          <h1>ยินต้อนรับสู่ระบบ 👋</h1>
+          <h1>ยินดีต้อนรับสู่ระบบ 👋</h1>
           <div className="search-bar">
-            <input type="text" placeholder="Search..." />
+            <input type="text" placeholder="ค้นหา..." />
           </div>
         </div>
 
         <div className="table-container">
-          <h2>All Customers</h2>
+          <h2>ข้อมูลลูกค้าทั้งหมด</h2>
           <table>
             <thead>
               <tr>
-                <th>Customer Name</th>
-                <th>Company</th>
-                <th>Phone Number</th>
-                <th>Email</th>
-                <th>Country</th>
-                <th>Status</th>
+                <th>ชื่อลูกค้า</th>
+                <th>บริษัท</th>
+                <th>เบอร์โทร</th>
+                <th>อีเมล</th>
+                <th>ประเทศ</th>
+                <th>สถานะ</th>
               </tr>
             </thead>
             <tbody>
@@ -47,16 +56,16 @@ const Dashboard = () => {
                 <td>Microsoft</td>
                 <td>(225) 555-0118</td>
                 <td>jane@microsoft.com</td>
-                <td>United States</td>
-                <td className="status-active">Active</td>
+                <td>สหรัฐอเมริกา</td>
+                <td className="status-active">ใช้งานอยู่</td>
               </tr>
               <tr>
                 <td>Floyd Miles</td>
                 <td>Yahoo</td>
                 <td>(205) 555-0100</td>
                 <td>floyd@yahoo.com</td>
-                <td>Kiribati</td>
-                <td className="status-inactive">Inactive</td>
+                <td>คิริบาส</td>
+                <td className="status-inactive">ไม่ใช้งาน</td>
               </tr>
             </tbody>
           </table>
