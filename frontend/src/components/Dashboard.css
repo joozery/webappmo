@@ -27,10 +27,27 @@
   padding: 0 20px;
 }
 
-.status-active {
-  color: green;
+.ant-layout-content {
+  background-color: #f0f2f5; /* ปรับพื้นหลังให้เหมาะสม */
+  padding: 24px;
+  margin: 0;
 }
 
-.status-inactive {
-  color: red;
+.ant-table {
+  margin-top: 20px;
+}
+
+.ant-layout-sider {
+  position: fixed;
+  height: 100vh;
+}
+
+.site-layout {
+  margin-left: 200px; /* ให้ content เริ่มจากด้านขวาของ Sider */
+}
+
+.ant-layout-header {
+  background-color: white;
+  padding: 0 24px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }

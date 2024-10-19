@@ -1,6 +1,7 @@
 import React from 'react';
 import { Layout, Menu, Table, Input, Button } from 'antd';
-import { UserOutlined, FileOutlined } from '@ant-design/icons';
+import { UserOutlined, FileOutlined, HistoryOutlined, EyeOutlined, 
+    SoundOutlined, DatabaseOutlined, DashboardOutlined, MedicineBoxOutlined } from '@ant-design/icons';
 import './Dashboard.css';
 
 const { Header, Content, Sider } = Layout;
@@ -27,16 +28,16 @@ const Dashboard = () => {
   ];
 
   return (
-    <Layout style={{ minHeight: '100vh' }}>
-      <Sider>
+    <Layout>
+      <Sider width={200} className="ant-layout-sider">
         <div className="logo">Dashboard</div>
         <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline">
-          <Menu.Item key="1" icon={<UserOutlined />}>ประวัติ</Menu.Item>
-          <Menu.Item key="2" icon={<UserOutlined />}>หู</Menu.Item>
-          <Menu.Item key="3" icon={<UserOutlined />}>ตา</Menu.Item>
-          <Menu.Item key="4" icon={<UserOutlined />}>ปอด</Menu.Item>
-          <Menu.Item key="5" icon={<FileOutlined />}>สารเคมี</Menu.Item>
-          <Menu.Item key="6" icon={<FileOutlined />}>สรุป</Menu.Item>
+          <Menu.Item key="1" icon={<HistoryOutlined />}>ประวัติ</Menu.Item>
+          <Menu.Item key="2" icon={<SoundOutlined />}>หู</Menu.Item>
+          <Menu.Item key="3" icon={<EyeOutlined />}>ตา</Menu.Item>
+          <Menu.Item key="4" icon={<MedicineBoxOutlined />}>ปอด</Menu.Item>
+          <Menu.Item key="5" icon={<DatabaseOutlined />}>สารเคมี</Menu.Item>
+          <Menu.Item key="6" icon={<DashboardOutlined />}>สรุป</Menu.Item>
         </Menu>
         <Button type="primary" className="upgrade-btn">Upgrade to Pro</Button>
         <div className="user-info">
@@ -45,7 +46,7 @@ const Dashboard = () => {
         </div>
       </Sider>
 
-      <Layout>
+      <Layout className="site-layout">
         <Header className="site-layout-background" style={{ padding: 0 }}>
           <div className="header-content">
             <h1>Hello user 👋</h1>
