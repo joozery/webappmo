@@ -22,7 +22,7 @@ const Dashboard = () => {
       {/* Content */}
       <div className="content">
         <div className="header">
-          <h1>Hello user 👋</h1>
+          <h1>ยินต้อนรับสู่ระบบ 👋</h1>
           <div className="search-bar">
             <input type="text" placeholder="Search..." />
           </div>
