@@ -1,73 +1,100 @@
-.dashboard {
+.dashboard-container {
   display: flex;
+  height: 100vh;
 }
 
 .sidebar {
-  width: 200px; /* กำหนดความกว้างของ Sidebar */
-  background-color: #f8f8f8;
+  width: 250px;
+  background-color: #fff;
+  border-right: 1px solid #e5e5e5;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   padding: 20px;
-  border-right: 1px solid #ddd; /* เพิ่มเส้นขอบด้านขวา */
 }
 
-.sidebar h2 {
-  margin-bottom: 20px;
+.sidebar-header {
+  font-size: 24px;
+  font-weight: bold;
 }
 
-.sidebar ul {
-  list-style-type: none;
+.sidebar nav ul {
+  list-style: none;
   padding: 0;
 }
 
-.sidebar li {
-  margin-bottom: 10px;
+.sidebar nav ul li {
+  padding: 15px;
+  cursor: pointer;
+  font-size: 16px;
 }
 
-.sidebar a {
-  text-decoration: none;
-  color: #333;
+.sidebar nav ul li.active {
+  background-color: #4b7bec;
+  color: #fff;
 }
 
-.dashboard-content {
-  flex: 1; /* ทำให้พื้นที่หลักขยายเต็มที่ */
-  padding: 20px;
+.sidebar-footer {
+  text-align: center;
+}
+
+.pro-btn {
+  background-color: #4b7bec;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.profile {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.main-content {
+  flex-grow: 1;
+  padding: 30px;
 }
 
 .dashboard-header {
-  margin-bottom: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-.customer-list {
-  background: white;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+.search-input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
 }
 
-.customer-list table {
+.customers-section {
+  margin-top: 30px;
+}
+
+.customers-section h3 {
+  font-size: 22px;
+  font-weight: bold;
+}
+
+table {
   width: 100%;
   border-collapse: collapse;
 }
 
-.customer-list th, .customer-list td {
+table th, table td {
   padding: 10px;
-  text-align: left;
   border-bottom: 1px solid #ddd;
-}
-
-.customer-list th {
-  background-color: #f2f2f2;
-}
-
-.status {
-  padding: 5px 10px;
-  border-radius: 4px;
-  color: white;
+  text-align: left;
 }
 
 .status.active {
-  background-color: green;
+  color: green;
+  font-weight: bold;
 }
 
 .status.inactive {
-  background-color: red;
+  color: red;
+  font-weight: bold;
 }

@@ -1,55 +1,41 @@
 import React from 'react';
 import './Dashboard.css';
 
-const Dashboard = () => {
-  const customers = [
-    {
-      name: "Jane Cooper",
-      company: "Microsoft",
-      phone: "(225) 555-0118",
-      email: "jane@microsoft.com",
-      country: "United States",
-      status: "Active",
-    },
-    {
-      name: "Floyd Miles",
-      company: "Yahoo",
-      phone: "(205) 555-0100",
-      email: "floyd@yahoo.com",
-      country: "Kiribati",
-      status: "Inactive",
-    },
-    {
-      name: "Ronald Richards",
-      company: "Adobe",
-      phone: "(302) 555-0167",
-      email: "ronald@adobe.com",
-      country: "Israel",
-      status: "Active",
-    },
-    // เพิ่มลูกค้าอื่น ๆ ตามต้องการ
-  ];
-
+function Dashboard() {
   return (
-    <div className="dashboard">
+    <div className="dashboard-container">
       <aside className="sidebar">
-        <h2>เมนู</h2>
-        <ul>
-          <li><a href="#">ประวัติ</a></li>
-          <li><a href="#">หู</a></li>
-          <li><a href="#">ตา</a></li>
-          <li><a href="#">ปอด</a></li>
-          <li><a href="#">สารเคมี</a></li>
-          <li><a href="#">สรุป</a></li>
-        </ul>
+        <div className="sidebar-header">
+          <h1>Dashboard</h1>
+        </div>
+        <nav>
+          <ul>
+            <li className="active">ประวัติ</li>
+            <li>หู</li>
+            <li>ตา</li>
+            <li>ปอด</li>
+            <li>สารเคมี</li>
+            <li>สรุป</li>
+          </ul>
+        </nav>
+        <div className="sidebar-footer">
+          <button className="pro-btn">Upgrade to Pro</button>
+          <div className="profile">
+            <span>Evano</span>
+            <small>Project Manager</small>
+          </div>
+        </div>
       </aside>
-      <main className="dashboard-content">
+      
+      <main className="main-content">
         <header className="dashboard-header">
-          <h1>Hello user 👋</h1>
+          <h2>Hello user 👋</h2>
+          <input type="text" placeholder="Search..." className="search-input" />
         </header>
-        <section className="customer-list">
-          <h2>All Customers</h2>
-          <p>Active Members</p>
+        
+        <section className="customers-section">
+          <h3>All Customers</h3>
+          <span>Active Members</span>
           <table>
             <thead>
               <tr>
@@ -62,24 +48,29 @@ const Dashboard = () => {
               </tr>
             </thead>
             <tbody>
-              {customers.map((customer, index) => (
-                <tr key={index}>
-                  <td>{customer.name}</td>
-                  <td>{customer.company}</td>
-                  <td>{customer.phone}</td>
-                  <td>{customer.email}</td>
-                  <td>{customer.country}</td>
-                  <td className={`status ${customer.status.toLowerCase()}`}>
-                    {customer.status}
-                  </td>
-                </tr>
-              ))}
+              <tr>
+                <td>Jane Cooper</td>
+                <td>Microsoft</td>
+                <td>(225) 555-0118</td>
+                <td>jane@microsoft.com</td>
+                <td>United States</td>
+                <td><span className="status active">Active</span></td>
+              </tr>
+              <tr>
+                <td>Floyd Miles</td>
+                <td>Yahoo</td>
+                <td>(205) 555-0100</td>
+                <td>floyd@yahoo.com</td>
+                <td>Kiribati</td>
+                <td><span className="status inactive">Inactive</span></td>
+              </tr>
+              {/* Add more rows as needed */}
             </tbody>
           </table>
         </section>
       </main>
     </div>
   );
-};
+}
 
 export default Dashboard;
