@@ -17,8 +17,9 @@ const Dashboard = () => {
   };
 
   // ใช้ useState เพื่อเก็บสถานะของหน้า
-  const [currentPage, setCurrentPage] = useState('history');
+  const [currentPage, setCurrentPage] = useState('history'); // เก็บสถานะของหน้าใน state
 
+  // ฟังก์ชันเพื่อ render หน้า content ตามสถานะ currentPage
   const renderContent = () => {
     switch (currentPage) {
       case 'ear':
