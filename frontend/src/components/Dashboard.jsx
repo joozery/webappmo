@@ -10,14 +10,26 @@ import { useNavigate } from 'react-router-dom';
 
 const Dashboard = () => {
   const navigate = useNavigate();
+  const [currentPage, setCurrentPage] = useState('history');
+  const [formData, setFormData] = useState({
+    name: '', dob: '', gender: '', startDate: '', idNumber: '',
+    doctorName: '', hospital: '', serviceUnit: '', address: '', phone: ''
+  });
 
-  const handleLogout = () => {
-    localStorage.removeItem('authToken');
-    navigate('/');
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  // ใช้ useState เพื่อเก็บสถานะของหน้า
-  const [currentPage, setCurrentPage] = useState('history'); // เก็บสถานะของหน้าใน state
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log('ข้อมูลที่กรอก:', formData);
+  };
+
+  // ฟังก์ชันจัดการคลิกเมนูเพื่อเปลี่ยนหน้า
+  const handleMenuClick = (e, page) => {
+    e.preventDefault();
+    setCurrentPage(page);
+  };
 
   // ฟังก์ชันเพื่อ render หน้า content ตามสถานะ currentPage
   const renderContent = () => {
@@ -66,7 +78,7 @@ const Dashboard = () => {
 
               <p>ตรวจสุขภาพ</p>
               <div className="radio-group">
-                <label><input type="radio" name="healthCheck" value="first" /> ตรวจสุขภาพครั้งแรก (ให้เสร็จสิ้นภายใน 30 วัน นับแต่วันที่รับลูกจ้างเข้าทำงาน)</label>
+                <label><input type="radio" name="healthCheck" value="first" /> ตรวจสุขภาพครั้งแรก</label>
                 <label><input type="radio" name="healthCheck" value="annual" /> ตรวจประจำปี</label>
                 <label><input type="radio" name="healthCheck" value="changeJob" /> ตรวจเปลี่ยนงาน</label>
                 <label><input type="radio" name="healthCheck" value="history" /> ตรวจตามประวัติความจำเป็น</label>
@@ -104,39 +116,17 @@ const Dashboard = () => {
     }
   };
 
-  const [formData, setFormData] = useState({
-    name: '',
-    dob: '',
-    gender: '',
-    startDate: '',
-    idNumber: '',
-    doctorName: '',
-    hospital: '',
-    serviceUnit: '',
-    address: '',
-    phone: ''
-  });
-
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log('ข้อมูลที่กรอก:', formData);
-  };
-
   return (
     <div className="container">
       {/* Sidebar */}
       <aside className="sidebar">
         <ul className="menu">
-          <li><a href="#" className={currentPage === 'history' ? 'active' : ''} onClick={() => setCurrentPage('history')}><FaHistory style={{ marginRight: '10px' }} /> ประวัติ</a></li>
-          <li><a href="#" className={currentPage === 'ear' ? 'active' : ''} onClick={() => setCurrentPage('ear')}><FaHeadphonesAlt style={{ marginRight: '10px' }} /> หู</a></li>
-          <li><a href="#" className={currentPage === 'eye' ? 'active' : ''} onClick={() => setCurrentPage('eye')}><FaEye style={{ marginRight: '10px' }} /> ตา</a></li>
-          <li><a href="#" className={currentPage === 'lung' ? 'active' : ''} onClick={() => setCurrentPage('lung')}><FaLungs style={{ marginRight: '10px' }} /> ปอด</a></li>
-          <li><a href="#" className={currentPage === 'chemicals' ? 'active' : ''} onClick={() => setCurrentPage('chemicals')}><FaFlask style={{ marginRight: '10px' }} /> สารเคมี</a></li>
-          <li><a href="#" className={currentPage === 'summary' ? 'active' : ''} onClick={() => setCurrentPage('summary')}><FaChartBar style={{ marginRight: '10px' }} /> สรุป</a></li>
+          <li><a href="#" className={currentPage === 'history' ? 'active' : ''} onClick={(e) => handleMenuClick(e, 'history')}><FaHistory style={{ marginRight: '10px' }} /> ประวัติ</a></li>
+          <li><a href="#" className={currentPage === 'ear' ? 'active' : ''} onClick={(e) => handleMenuClick(e, 'ear')}><FaHeadphonesAlt style={{ marginRight: '10px' }} /> หู</a></li>
+          <li><a href="#" className={currentPage === 'eye' ? 'active' : ''} onClick={(e) => handleMenuClick(e, 'eye')}><FaEye style={{ marginRight: '10px' }} /> ตา</a></li>
+          <li><a href="#" className={currentPage === 'lung' ? 'active' : ''} onClick={(e) => handleMenuClick(e, 'lung')}><FaLungs style={{ marginRight: '10px' }} /> ปอด</a></li>
+          <li><a href="#" className={currentPage === 'chemicals' ? 'active' : ''} onClick={(e) => handleMenuClick(e, 'chemicals')}><FaFlask style={{ marginRight: '10px' }} /> สารเคมี</a></li>
+          <li><a href="#" className={currentPage === 'summary' ? 'active' : ''} onClick={(e) => handleMenuClick(e, 'summary')}><FaChartBar style={{ marginRight: '10px' }} /> สรุป</a></li>
         </ul>
         <button className="logout-btn" onClick={handleLogout}>
           <FaSignOutAlt style={{ marginRight: '10px' }} /> ออกจากระบบ
