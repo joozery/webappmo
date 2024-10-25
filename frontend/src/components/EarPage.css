@@ -1,0 +1,29 @@
+.ear-page {
+    padding: 20px;
+  }
+  
+  .table-container {
+    margin-bottom: 20px;
+  }
+  
+  .hearing-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .hearing-table th,
+  .hearing-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+  }
+  
+  .hearing-table th {
+    background-color: #f2f2f2;
+    color: black;
+  }
+  
+  .chart-container {
+    width: 100%;
+    height: 400px;
+  }

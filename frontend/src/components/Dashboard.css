@@ -276,7 +276,7 @@ table tbody tr:hover {
 .radio-group {
   display: flex;
   flex-wrap: wrap; /* ให้ radio buttons อยู่ในบรรทัดเดียวกัน และยืดหยุ่นได้ */
-  gap: 15px; /* ระยะห่างระหว่าง radio buttons */
+  gap: 5px; /* ระยะห่างระหว่าง radio buttons */
   margin-bottom: 20px;
 }
 
